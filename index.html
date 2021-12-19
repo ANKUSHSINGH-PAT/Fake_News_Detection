@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+     <link rel="icon" href="IMG/favicon.png">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+
+            <header>
+                <h1>Fake News Detector</h1>
+            </header>
+	 <p>Get rid of fake news. Use this site to verify your news...</p>
+
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+		<br> </br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+        	<div class="results">
+
+					{% if prediction == ['FAKE']%}
+					<h2 style="color:red;">Looking Spam⚠️News </h2>
+					{% elif prediction == ['REAL']%}
+								<h2 style="color:green;"><b>Looking Real News</b></h2>
+					{% endif %}
+			</div>
+
+
+    </form>
+      <div class="main-content">
+
+            <p class="aboutP">
+                Fake news is false or misleading information presented as news.
+                It often has the aim of damaging the reputation of a person or entity, or making money through advertising revenue.
+                However, the term does not have a fixed definition, and has been applied more broadly to include any type of false information,
+                including unintentional and unconscious mechanisms, and also by high-profile individuals to apply to any news unfavourable to their personal perspectives.
+            </p>
+            <br>
+            <p class="aboutP2">So, there are too much reasons to concern about this topic.</p>
+            <p class="aboutP2">And this is the site that fight against it to make the world more safe, more beautiful.</p>
+        </div>
+	 <footer>
+            <p> © <a target="_blank" href="https://www.iiitbh.ac.in/">IIIT Bhagalpur(mini project)</a></p>
+	 </footer>
+
+     </div>
+ </body>
+</html>
